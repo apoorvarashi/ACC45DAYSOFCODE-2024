@@ -1,0 +1,79 @@
+#include <iostream>
+
+struct Node {
+    int data;
+    Node* next;
+    
+    Node(int value) : data(value), next(nullptr) {}
+};
+
+class SinglyLinkedList {
+private:
+    Node* head;
+
+public:
+    SinglyLinkedList() : head(nullptr) {}
+
+    void append(int value) {
+        Node* newNode = new Node(value);
+        if (!head) {
+            head = newNode;
+            return;
+        }
+        Node* lastNode = head;
+        while (lastNode->next) {
+            lastNode = lastNode->next;
+        }
+        lastNode->next = newNode;
+    }
+
+    void display() const {
+        Node* currentNode = head;
+        while (currentNode) {
+            std::cout << currentNode->data << " -> ";
+            currentNode = currentNode->next;
+        }
+        std::cout << "nullptr" << std::endl;
+    }
+    void deleteValue(int value) {
+        Node* currentNode = head;
+        Node* prevNode = nullptr;
+
+        if (currentNode && currentNode->data == value) {
+            head = currentNode->next;
+            delete currentNode;
+            return;
+        }
+        while (currentNode && currentNode->data != value) {
+            prevNode = currentNode;
+            currentNode = currentNode->next;
+        }
+        if (!currentNode) return;
+
+        prevNode->next = currentNode->next;
+        delete currentNode;
+    }
+    ~SinglyLinkedList() {
+        Node* currentNode = head;
+        while (currentNode) {
+            Node* nextNode = currentNode->next;
+            delete currentNode;
+            currentNode = nextNode;
+        }
+    }
+};
+int main() {
+    SinglyLinkedList linkedList;
+    linkedList.append(1);
+    linkedList.append(2);
+    linkedList.append(3);
+    
+    std::cout << "Linked List:" << std::endl;
+    linkedList.display();
+    
+    linkedList.deleteValue(2);
+    std::cout << "After deleting 2:" << std::endl;
+    linkedList.display();
+
+    return 0;
+}
