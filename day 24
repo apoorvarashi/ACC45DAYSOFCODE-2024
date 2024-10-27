@@ -1,0 +1,31 @@
+#include <iostream>
+
+// Function to calculate factorial of a number
+unsigned long long factorial(int n) {
+    unsigned long long result = 1;
+    for (int i = 1; i <= n; ++i) {
+        result *= i;
+    }
+    return result;
+}
+
+// Main function
+int main() {
+    int number;
+
+    // User input with validation
+    std::cout << "Enter a positive integer: ";
+    while (!(std::cin >> number) || number < 0) {
+        std::cout << "Invalid input. Please enter a non-negative integer: ";
+        std::cin.clear();  // Clear the error flag
+        std::cin.ignore(10000, '\n');  // Ignore invalid input
+    }
+
+    // Calculate factorial
+    unsigned long long result = factorial(number);
+
+    // Display the result
+    std::cout << "Factorial of " << number << " is: " << result << std::endl;
+
+    return 0;
+}
