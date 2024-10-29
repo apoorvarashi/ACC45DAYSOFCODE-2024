@@ -1,0 +1,36 @@
+#include <iostream>
+#include <cstring>
+
+class DataHandler {
+private:
+    int* data;
+    size_t size;
+
+public:
+    DataHandler(size_t n) : size(n) {
+        data = new int[size];
+        std::memset(data, 0, size * sizeof(int));  // Initialize memory to 0
+    }
+    void setValue(size_t index, int value) {
+        if (index < size) {
+            *(data + index) = value;  // Use pointer arithmetic
+        }
+    }
+  int getValue(size_t index) const {
+        if (index < size) {
+            return *(data + index);  // Use pointer dereferencing
+        }
+        return -1; // Error value if index is out of bounds
+    }
+  DataHandler() {
+        delete[] data;
+    }
+};
+
+int main() {
+    size_t n = 5;
+    DataHandler handler(n);
+    handler.setValue(2, 42);
+    std::cout << "Value at index 2: " << handler.getValue(2) << std::endl;
+    return 0;
+}
