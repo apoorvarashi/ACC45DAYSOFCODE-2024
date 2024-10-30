@@ -1,0 +1,137 @@
+#include <iostream>
+#include <unordered_map>
+#include <string>
+using namespace std;
+
+class Account {
+private:
+    string name;
+    int accountNumber;
+    double balance;
+
+public:
+    Account(const string& name, int accountNumber)
+        : name(name), accountNumber(accountNumber), balance(0.0) {}
+
+    void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+            cout << "Deposited $" << amount << " to account #" << accountNumber << endl;
+        } else {
+            cout << "Invalid deposit amount!" << endl;
+        }
+    }
+
+    void withdraw(double amount) {
+        if (amount > 0 && amount <= balance) {
+            balance -= amount;
+            cout << "Withdrew $" << amount << " from account #" << accountNumber << endl;
+        } else {
+            cout << "Invalid withdraw amount or insufficient balance!" << endl;
+        }
+    }
+
+    void displayBalance() const {
+        cout << "Account #" << accountNumber << " Balance: $" << balance << endl;
+    }
+
+    int getAccountNumber() const {
+        return accountNumber;
+    }
+};
+
+class Bank {
+private:
+    unordered_map<int, Account> accounts;
+    int nextAccountNumber;
+
+public:
+    Bank() : nextAccountNumber(1001) {}
+
+    void createAccount(const string& name) {
+        int accountNumber = nextAccountNumber++;
+        accounts[accountNumber] = Account(name, accountNumber);
+        cout << "Account created for " << name << " with account number: " << accountNumber << endl;
+    }
+
+    void depositToAccount(int accountNumber, double amount) {
+        if (accounts.find(accountNumber) != accounts.end()) {
+            accounts[accountNumber].deposit(amount);
+        } else {
+            cout << "Account not found!" << endl;
+        }
+    }
+
+    void withdrawFromAccount(int accountNumber, double amount) {
+        if (accounts.find(accountNumber) != accounts.end()) {
+            accounts[accountNumber].withdraw(amount);
+        } else {
+            cout << "Account not found!" << endl;
+        }
+    }
+
+    void checkBalance(int accountNumber) const {
+        auto it = accounts.find(accountNumber);
+        if (it != accounts.end()) {
+            it->second.displayBalance();
+        } else {
+            cout << "Account not found!" << endl;
+        }
+    }
+};
+
+int main() {
+    Bank bank;
+    int choice;
+
+    while (true) {
+        cout << "\n--- Banking System Menu ---\n";
+        cout << "1. Create Account\n";
+        cout << "2. Deposit Money\n";
+        cout << "3. Withdraw Money\n";
+        cout << "4. Check Balance\n";
+        cout << "5. Exit\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        if (choice == 1) {
+            string name;
+            cout << "Enter your name: ";
+            cin >> name;
+            bank.createAccount(name);
+
+        } else if (choice == 2) {
+            int accountNumber;
+            double amount;
+            cout << "Enter account number: ";
+            cin >> accountNumber;
+            cout << "Enter deposit amount: ";
+            cin >> amount;
+            bank.depositToAccount(accountNumber, amount);
+
+        } else if (choice == 3) {
+            int accountNumber;
+            double amount;
+            cout << "Enter account number: ";
+            cin >> accountNumber;
+            cout << "Enter withdraw amount: ";
+            cin >> amount;
+            bank.withdrawFromAccount(accountNumber, amount);
+
+        } else if (choice == 4) {
+            int accountNumber;
+            cout << "Enter account number: ";
+            cin >> accountNumber;
+            bank.checkBalance(accountNumber);
+
+        } else if (choice == 5) {
+            cout << "Thank you for using the Banking System. Goodbye!\n";
+            break;
+
+        } else {
+            cout << "Invalid choice! Please try again.\n";
+        }
+    }
+
+    return 0;
+}
