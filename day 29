@@ -1,0 +1,40 @@
+#include <iostream>
+#include <limits> // For error handling
+
+// Function to get valid input from the user
+int getValidInput() {
+    int number;
+    while (true) {
+        std::cin >> number;
+
+        // Check if input is valid
+        if (std::cin.fail()) {
+            std::cin.clear(); // Clear the error flag
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Ignore bad input
+            std::cout << "Invalid input, please enter an integer: ";
+        } else {
+            return number; // Valid input, return the number
+        }
+    }
+}
+
+// Main function
+int main() {
+    int num1, num2;
+
+    // Get first number
+    std::cout << "Enter the first number: ";
+    num1 = getValidInput();
+
+    // Get second number
+    std::cout << "Enter the second number: ";
+    num2 = getValidInput();
+
+    // Calculate sum
+    int sum = num1 + num2;
+
+    // Display result
+    std::cout << "The sum of " << num1 << " and " << num2 << " is: " << sum << std::endl;
+
+    return 0;
+}
