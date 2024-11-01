@@ -1,0 +1,26 @@
+#include<iostream>
+using namespace std;
+
+int main() {
+    char num;  // num should be a character
+    cout << "Enter any character: ";
+    cin >> num;
+
+    // Check for uppercase letters A-F
+    if (num == 'A' || num == 'B' || num == 'C' || num == 'D' || num == 'E' || num == 'F') {
+        cout << "Capital char";
+    }
+    // Check for lowercase letters a-f
+    else if (num == 'a' || num == 'b' || num == 'c' || num == 'd' || num == 'e' || num == 'f') {
+        cout << "Small char";
+    }
+    // Check for numbers 1-5
+    else if (num == '1' || num == '2' || num == '3' || num == '4' || num == '5') {
+        cout << "Num is a digit between 1 and 5";
+    }
+    else {
+        cout << "Other character";
+    }
+
+    return 0;
+}
