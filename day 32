@@ -1,0 +1,53 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Base class
+class Person {
+protected:
+    string name;
+    int age;
+
+public:
+    // Constructor for base class
+    Person(string name, int age) {
+        this->name = name;
+        this->age = age;
+    }
+
+    // Method to display Person details
+    void displayPersonInfo() {
+        cout << "Name: " << name << ", Age: " << age << endl;
+    }
+};
+
+// Derived class
+class Student : public Person {
+private:
+    string studentID;
+    string major;
+
+public:
+    // Constructor for derived class
+    Student(string name, int age, string studentID, string major)
+        : Person(name, age) {
+        this->studentID = studentID;
+        this->major = major;
+    }
+
+    // Method to display Student details
+    void displayStudentInfo() {
+        displayPersonInfo();  // Call base class method
+        cout << "Student ID: " << studentID << ", Major: " << major << endl;
+    }
+};
+
+int main() {
+    // Create a Student object
+    Student student1("Alice", 20, "S12345", "Computer Science");
+
+    // Display student information
+    student1.displayStudentInfo();
+
+    return 0;
+}
