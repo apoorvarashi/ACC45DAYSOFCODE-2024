@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    // Declare an integer variable
+    int var = 42;
+    
+    // Declare a pointer that holds the address of an integer
+    int* ptr = &var;
+
+    // Display the value of the variable using the variable and the pointer
+    cout << "Value of var: " << var << endl;
+    cout << "Value of var through ptr: " << *ptr << endl;
+
+    // Display the address of the variable using the pointer
+    cout << "Address of var: " << &var << endl;
+    cout << "Address stored in ptr: " << ptr << endl;
+
+    // Modify the value of var using the pointer
+    *ptr = 100;
+    cout << "New value of var after modifying through ptr: " << var << endl;
+
+    // Pointer to a pointer
+    int** ptr2 = &ptr;
+    cout << "Address of ptr (stored in ptr2): " << ptr2 << endl;
+    cout << "Value pointed to by ptr2: " << **ptr2 << endl;
+
+    return 0;
+}
