@@ -1,0 +1,51 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    // Basic Pointer Declaration and Initialization
+    int var = 10;        // Regular variable
+    int *ptr = &var;     // Pointer to the variable 'var'
+
+    // Display the address of 'var' using the pointer
+    cout << "Address of var: " << ptr << endl;
+    
+    // Access the value of 'var' using dereferencing
+    cout << "Value of var using pointer: " << *ptr << endl;
+
+    // Modify 'var' through the pointer
+    *ptr = 20;
+    cout << "Modified value of var: " << var << endl;
+
+    // Working with Arrays and Pointers
+    int arr[] = {1, 2, 3, 4, 5};  // Array of integers
+    int *arr_ptr = arr;            // Pointer to the first element of the array
+
+    cout << "Array elements using pointer arithmetic:" << endl;
+    for (int i = 0; i < 5; i++) {
+        cout << *(arr_ptr + i) << " ";  // Access elements using pointer arithmetic
+    }
+    cout << endl;
+
+    // Dynamic Memory Allocation
+    int *dyn_ptr = new int;        // Allocate memory for a single integer
+    *dyn_ptr = 50;
+    cout << "Dynamically allocated value: " << *dyn_ptr << endl;
+
+    // Dynamic Array Allocation
+    int *dyn_arr = new int[5];     // Allocate memory for an array of 5 integers
+    for (int i = 0; i < 5; i++) {
+        dyn_arr[i] = i * 10;
+    }
+
+    cout << "Dynamically allocated array values:" << endl;
+    for (int i = 0; i < 5; i++) {
+        cout << dyn_arr[i] << " ";
+    }
+    cout << endl;
+
+    // Deallocate memory
+    delete dyn_ptr;                // Free memory for single integer
+    delete[] dyn_arr;              // Free memory for array
+
+    return 0;
+}
