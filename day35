@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int num = 42;        // Declare an integer variable
+    int *ptr = &num;     // Declare a pointer and assign it the address of num
+
+    // Output the value of num
+    cout << "Value of num: " << num << endl;
+
+    // Output the address of num using the pointer
+    cout << "Address of num: " << ptr << endl;
+
+    // Access the value of num using the pointer
+    cout << "Value of num using pointer: " << *ptr << endl;
+
+    // Modify the value of num using the pointer
+    *ptr = 100;
+    cout << "New value of num: " << num << endl;
+
+    return 0;
+}
