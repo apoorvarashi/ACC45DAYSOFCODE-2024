@@ -1,0 +1,52 @@
+#include <iostream>
+#include <string>
+
+int main() {
+    // Initializing strings
+    std::string str1 = "Hello";
+    std::string str2 = "World";
+    std::string str3;
+
+    // Concatenation
+    str3 = str1 + " " + str2;
+    std::cout << "Concatenated string: " << str3 << std::endl;
+
+    // Finding length
+    std::cout << "Length of str3: " << str3.length() << std::endl;
+
+    // Accessing characters
+    std::cout << "First character of str3: " << str3[0] << std::endl;
+
+    // Modifying characters
+    str3[0] = 'h';
+    std::cout << "Modified str3: " << str3 << std::endl;
+
+    // Substring
+    std::string subStr = str3.substr(0, 5); // Extracts "hello"
+    std::cout << "Substring of str3: " << subStr << std::endl;
+
+    // Finding a substring
+    std::size_t found = str3.find("World");
+    if (found != std::string::npos)
+        std::cout << "\"World\" found at position: " << found << std::endl;
+    else
+        std::cout << "\"World\" not found in str3" << std::endl;
+
+    // Erasing part of the string
+    str3.erase(5, 6); // Removes " World"
+    std::cout << "After erase: " << str3 << std::endl;
+
+    // Inserting into a string
+    str3.insert(5, " Everyone");
+    std::cout << "After insert: " << str3 << std::endl;
+
+    // Replacing part of the string
+    str3.replace(5, 8, "World");
+    std::cout << "After replace: " << str3 << std::endl;
+
+    // Converting string to C-string
+    const char* cstr = str3.c_str();
+    std::cout << "C-string version of str3: " << cstr << std::endl;
+
+    return 0;
+}
