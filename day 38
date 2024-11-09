@@ -1,0 +1,20 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    // Declare an array of integers with 5 elements
+    int numbers[5] = {10, 20, 30, 40, 50};
+
+    // Access and print elements using a loop
+    cout << "Array elements are: ";
+    for (int i = 0; i < 5; i++) {
+        cout << numbers[i] << " ";
+    }
+    cout << endl;
+
+    // Modify an element
+    numbers[2] = 60;
+    cout << "Modified third element: " << numbers[2] << endl;
+
+    return 0;
+}
