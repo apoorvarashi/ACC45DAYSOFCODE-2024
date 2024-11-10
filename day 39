@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    // Declaring and initializing an array of integers
+    int numbers[5] = {10, 20, 30, 40, 50};
+
+    // Accessing and printing array elements
+    cout << "Array elements: ";
+    for (int i = 0; i < 5; i++) {
+        cout << numbers[i] << " ";
+    }
+
+    // Modifying an array element
+    numbers[2] = 100;
+    cout << "\nUpdated third element: " << numbers[2] << endl;
+
+    return 0;
+}
