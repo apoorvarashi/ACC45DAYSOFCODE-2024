@@ -1,0 +1,14 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int var = 20;        // Declare an integer variable
+    int* ptr = &var;     // Declare a pointer and assign it the address of var
+
+    cout << "Value of var: " << var << endl;
+    cout << "Address of var: " << &var << endl;
+    cout << "Pointer (ptr) points to: " << ptr << endl;
+    cout << "Value pointed to by ptr: " << *ptr << endl;  // Dereference pointer to get the value
+
+    return 0;
+}
