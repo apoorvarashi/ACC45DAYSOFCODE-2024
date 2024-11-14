@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+
+class Animal {
+public:
+    void eat() {
+        cout << "This animal is eating." << endl;
+    }
+};
+
+class Dog : public Animal {
+public:
+    void bark() {
+        cout << "The dog is barking." << endl;
+    }
+};
+
+class Cat : public Animal {
+public:
+    void meow() {
+        cout << "The cat is meowing." << endl;
+    }
+};
+
+int main() {
+    Dog myDog;
+    Cat myCat;
+
+    myDog.eat();  // Inherited from Animal
+    myDog.bark(); // Defined in Dog
+
+    myCat.eat();  // Inherited from Animal
+    myCat.meow(); // Defined in Cat
+
+    return 0;
+}
