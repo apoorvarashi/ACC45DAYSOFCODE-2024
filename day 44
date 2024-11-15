@@ -1,0 +1,15 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int var = 10;        // Declare an integer variable
+    int *p = &var;       // Declare a pointer to an integer and initialize it with the address of var
+
+    cout << "Address of var: " << p << endl;    // Print the address of var
+    cout << "Value of var: " << *p << endl;     // Print the value at the address stored in p (dereferencing)
+
+    *p = 20;             // Modify the value of var through the pointer
+    cout << "New value of var: " << var << endl; // Print the new value of var
+
+    return 0;
+}
