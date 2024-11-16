@@ -1,0 +1,15 @@
+#include <iostream>
+
+int main() {
+    const int SIZE = 100000000; // 100 million elements
+    int* arr = new int[SIZE];   // Allocate on the heap
+
+    for (int i = 0; i < SIZE; i++) {
+        arr[i] = i;
+    }
+
+    std::cout << "Last element: " << arr[SIZE - 1] << std::endl;
+
+    delete[] arr; // Don't forget to free the allocated memory
+    return 0;
+}
