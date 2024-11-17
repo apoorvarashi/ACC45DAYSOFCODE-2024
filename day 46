@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+
+// Function to swap values using pointers
+void swap(int* a, int* b) {
+    int temp = *a; // Store value at address a in temp
+    *a = *b;       // Copy value at address b to address a
+    *b = temp;     // Copy value in temp to address b
+}
+
+int main() {
+    int x = 10;
+    int y = 20;
+
+    cout << "Before swapping:" << endl;
+    cout << "x = " << x << ", y = " << y << endl;
+
+    // Call the swap function with pointers to x and y
+    swap(&x, &y);
+
+    cout << "After swapping:" << endl;
+    cout << "x = " << x << ", y = " << y << endl;
+
+    return 0;
+}
