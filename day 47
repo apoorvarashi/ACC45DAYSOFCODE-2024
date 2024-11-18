@@ -1,0 +1,25 @@
+#include <iostream> // For input and output
+
+// Function declaration
+int add(int a, int b); // This function takes two integers and returns their sum
+
+int main() {
+    int num1, num2;
+
+    // Prompting user input
+    std::cout << "Enter two numbers: ";
+    std::cin >> num1 >> num2;
+
+    // Function call
+    int result = add(num1, num2);
+
+    // Output the result
+    std::cout << "The sum is: " << result << std::endl;
+
+    return 0; // Indicate successful completion
+}
+
+// Function definition
+int add(int a, int b) {
+    return a + b;
+}
