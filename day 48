@@ -1,0 +1,46 @@
+#include <iostream>
+#include <string>  // Include string library
+
+int main() {
+    // Declare and initialize a string
+    std::string greeting = "Hello, World!";
+
+    // Display the string
+    std::cout << "Greeting: " << greeting << std::endl;
+
+    // Find the length of the string
+    std::cout << "Length of greeting: " << greeting.length() << std::endl;
+
+    // Access individual characters
+    std::cout << "First character: " << greeting[0] << std::endl;
+
+    // Modify the string
+    greeting[7] = 'w';  // Change 'W' to 'w'
+    std::cout << "Modified greeting: " << greeting << std::endl;
+
+    // Concatenate strings
+    std::string name = "John";
+    std::string fullGreeting = greeting + " " + name + "!";
+    std::cout << "Full greeting: " << fullGreeting << std::endl;
+
+    // Find a substring
+    size_t position = fullGreeting.find("John");
+    if (position != std::string::npos) {
+        std::cout << "'John' found at position: " << position << std::endl;
+    } else {
+        std::cout << "'John' not found in the greeting." << std::endl;
+    }
+
+    // Extract a substring
+    std::string extracted = fullGreeting.substr(7, 5);  // Extracts "world"
+    std::cout << "Extracted substring: " << extracted << std::endl;
+
+    // Compare strings
+    if (greeting == "Hello, world!") {
+        std::cout << "The greeting is 'Hello, world!'" << std::endl;
+    } else {
+        std::cout << "The greeting is something else." << std::endl;
+    }
+
+    return 0;
+}
