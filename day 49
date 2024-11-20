@@ -1,0 +1,56 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+
+int main() {
+    std::string filename = "example.txt";
+
+    // Writing to a file
+    std::ofstream outFile(filename); // Open file for writing
+    if (outFile.is_open()) {
+        outFile << "Hello, world!\n";
+        outFile << "This is a C++ file handling example.\n";
+        outFile.close(); // Close the file
+        std::cout << "Data written to file successfully.\n";
+    } else {
+        std::cerr << "Unable to open file for writing.\n";
+    }
+
+    // Reading from a file
+    std::ifstream inFile(filename); // Open file for reading
+    if (inFile.is_open()) {
+        std::string line;
+        std::cout << "Reading data from the file:\n";
+        while (std::getline(inFile, line)) { // Read file line by line
+            std::cout << line << "\n";
+        }
+        inFile.close(); // Close the file
+    } else {
+        std::cerr << "Unable to open file for reading.\n";
+    }
+
+    // Appending to a file
+    std::ofstream appendFile(filename, std::ios::app); // Open file in append mode
+    if (appendFile.is_open()) {
+        appendFile << "Appending this line to the file.\n";
+        appendFile.close(); // Close the file
+        std::cout << "Data appended to file successfully.\n";
+    } else {
+        std::cerr << "Unable to open file for appending.\n";
+    }
+
+    // Verify appending by reading the file again
+    inFile.open(filename); // Open file again for reading
+    if (inFile.is_open()) {
+        std::string line;
+        std::cout << "Reading updated file contents:\n";
+        while (std::getline(inFile, line)) {
+            std::cout << line << "\n";
+        }
+        inFile.close(); // Close the file
+    } else {
+        std::cerr << "Unable to open file for reading.\n";
+    }
+
+    return 0;
+}
