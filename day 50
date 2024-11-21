@@ -1,0 +1,22 @@
+#include <iostream>
+#include <fstream>
+
+int openFile(const std::string& fileName) {
+    std::ifstream file(fileName);
+    if (!file.is_open()) {
+        return -1;  // Return an error code
+    }
+    // Process file...
+    file.close();
+    return 0;  // Return success code
+}
+
+int main() {
+    int result = openFile("example.txt");
+    if (result != 0) {
+        std::cerr << "Error: Could not open the file.\n";
+        return result;
+    }
+    std::cout << "File processed successfully.\n";
+    return 0;
+}
